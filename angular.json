@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-material"
+    }
+  },
+  "defaultProject": "angular-material",
+  "cli": {
+    "analytics": false
+  }
 }
