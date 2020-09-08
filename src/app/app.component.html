@@ -1,4 +1,17 @@
-<mat-checkbox></mat-checkbox>
-<br>
-<mat-slider></mat-slider>
-<router-outlet></router-outlet>
+<form #userForm='ngForm'  novalidate >
+        <div class="form-group">
+          <mat-checkbox></mat-checkbox>
+          <br>
+          <!-- here i have changed primary session color of mat-slider- from indigo-pink.css which is theme -->
+          <mat-slider min=20 max=60 value=20 thumbLabel color="primary" (input)="onChange($event)" ></mat-slider>
+          
+<!-- change the dimension of box-agemin/max from style.css-->            
+            <div class="box-minmax">
+              <span  class="box-agemin" > 20</span><span class="box-agemax">60</span>
+            </div>
+
+          <input  placeholder="Ex. pat@example.com">
+        </div>
+
+</form>
+<!--<router-outlet></router-outlet> -->

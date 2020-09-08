@@ -1,7 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
+html,body {
+ height: 100%;
+  background: linear-gradient(to right top, #ffffff, #a9a9a9);
+} 
+
 mat-slider {
-    width: 300px;
-    color: black;
+    width: 500px;
+    color : gray;
+  }
+
+  .box-minmax{
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: gray;
+    
+    span:first-child{
+      margin-left: 10px;
+    }
+  }
+    
+  .box-agemin{
+    position: absolute;
+    left: 10px;
+    top: 63px;
+    z-index: 1;
+  }
+
+  .box-agemax{
+    position: absolute;
+    left: 496px;
+    top: 63px;
+    z-index: 1;
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
   }
