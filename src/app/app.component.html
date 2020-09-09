@@ -1,17 +1,72 @@
-<form #userForm='ngForm'  novalidate >
-        <div class="form-group">
-          <mat-checkbox></mat-checkbox>
-          <br>
-          <!-- here i have changed primary session color of mat-slider- from indigo-pink.css which is theme -->
-          <mat-slider min=20 max=60 value=20 thumbLabel color="primary" (input)="onChange($event)" ></mat-slider>
-          
-<!-- change the dimension of box-agemin/max from style.css-->            
-            <div class="box-minmax">
-              <span  class="box-agemin" > 20</span><span class="box-agemax">60</span>
-            </div>
+<!--<router-outlet></router-outlet> -->
 
-          <input  placeholder="Ex. pat@example.om">
+
+<form #userForm='ngForm'  novalidate >
+<div class="container">
+  <h2>Modal Example</h2>
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal form-group" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" color="red">Registration</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="form-group">
+          <input  placeholder="First Name">
+          </div>  
+
+          <div class="form-group">
+            <input  placeholder="Last Name">
+            </div>  
+
+            <div class="form-group">
+              <input  placeholder="Email">
+              </div>  
+        <div class="modal-body">
+          Modal body..
         </div>
 
+        <div class="form-group">
+          <select (blur)="validateTopic(state.value)" (change)="validateTopic(state.value)" class="custom-select" d
+          [class.is-invalid]="stateHasError && state.touched"  #state="ngModel" name="state" placeholder="state" [ngModel]="userModel.state">
+            <option value="default"><label> State</label></option>
+            <option *ngFor="let state of states" > {{ state }} </option>
+          </select>
+        </div>
+          
+          <div class="form-group">
+            <mat-checkbox></mat-checkbox>
+            <br>
+            <!-- here i have changed primary session color of mat-slider- from indigo-pink.css which is theme -->
+            <mat-slider min=20 max=60 value=20 thumbLabel color="primary" (input)="onChange($event)" ></mat-slider>
+            
+  <!-- change the dimension of box-agemin/max from style.css-->            
+              <div class="box-minmax">
+                <span  class="box-agemin" > 20</span><span class="box-agemax">60</span>
+              </div>
+
+          </div>
+  
+  
+          
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
 </form>
-<!--<router-outlet></router-outlet> -->
