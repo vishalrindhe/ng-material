@@ -37,12 +37,36 @@
         </div>
 
         <div class="form-group">
-          <select (blur)="validateTopic(state.value)" (change)="validateTopic(state.value)" class="custom-select" d
-          [class.is-invalid]="stateHasError && state.touched"  #state="ngModel" name="state" placeholder="state" [ngModel]="userModel.state">
-            <option value="default"><label> State</label></option>
+          <select (blur)="validateTopic(state.value)" 
+          (change)="validateTopic(state.value)" 
+          class="custom-select"
+          [class.is-invalid]="stateHasError && state.touched" 
+           #state="ngModel" 
+           [ngModel]="userModel.state">
+          <option value="default">State</option>
             <option *ngFor="let state of states" > {{ state }} </option>
           </select>
+          <small class="text-danger" [class.d-none]="!stateHasError || state.untouched">Please select topic</small>
         </div>
+
+        <div class="form-group">
+          <select #country="ngModel" 
+          class="custom-select"
+          [ngModel]="userModel.country">
+            <option value="default">Country</option>
+            <option *ngFor="let country of countries">{{country}}</option>
+          </select>
+        </div>
+
+        <mat-form-field appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value">
+              <mat-select required>
+                <mat-option>-- None --</mat-option>
+                <mat-option value="option">Option</mat-option>
+              </mat-select>
+            <mat-label><b> Fancy</b> <i> label</i></mat-label>
+        </mat-form-field>
           
           <div class="form-group">
             <mat-checkbox></mat-checkbox>
@@ -70,3 +94,4 @@
   
 </div>
 </form>
+

@@ -15,6 +15,9 @@ import {MatFormFieldModule, MatError, MatLabel} from '@angular/material/form-fie
 
 import {MatInputModule} from '@angular/material/input'; 
 import {FormsModule, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
+import { MatOptionModule, MatOptionSelectionChange } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 
@@ -35,6 +38,9 @@ import {FormsModule, FormControl, Validators, ReactiveFormsModule} from '@angula
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatOptionModule,
+    MatSelectModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

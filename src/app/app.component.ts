@@ -1,7 +1,8 @@
 import { Reg } from './reg';
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,9 @@ export class AppComponent {
             "Sikkim","Tamil Nadu","Telangana","Tripura",
             "Uttar Pradesh","Uttarakhand","West Bengal"];
 
-  userModel = new Reg ( " ", " ", " " , 1 , 2 , "State "," "," " ,true);
+  countries = ["India", "Pak", "China"];
+
+  userModel = new Reg ( " ", " ", " " , 1 , 2 , " "," "," " ,true);
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -39,4 +42,16 @@ export class AppComponent {
   onChange(event) {
     console.log(event);
   }
+
+  options: FormGroup;
+  hideRequiredControl = new FormControl(false);
+  floatLabelControl = new FormControl('auto');
+
+  constructor(fb: FormBuilder) {
+    this.options = fb.group({
+      hideRequired: this.hideRequiredControl,
+      floatLabel: this.floatLabelControl,
+    });
+  }
+
 }
