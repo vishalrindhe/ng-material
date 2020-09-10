@@ -11,14 +11,32 @@ mat-slider {
     color : gray;
   }
 
+  .gray{
+    color: gray;
+  }
+
+  .margin {
+    margin: 20px 50px 15px 35px; ;
+  }
+
+  .width{
+    width: 210px;
+  }
+
   .modal-background{
     background: #0080f0;
     
   }
 
-  .modal-text{
+  .modal-header-text{
     color: white;
   }
+
+  .modal-close{
+    color: white;
+    background : white;
+  }
+
   .box-minmax{
     width: 500px;
     display: flex;

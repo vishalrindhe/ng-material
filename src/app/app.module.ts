@@ -1,3 +1,4 @@
+import { MatChipInput, MatChipList, MatChipsModule } from '@angular/material/chips';
 import { MaterialDesignModule } from './material-design/material-design.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,8 +21,6 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent
@@ -39,8 +38,9 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     FormsModule,
     MatOptionModule,
-    MatSelectModule
-
+    MatSelectModule,
+    MatChipsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
