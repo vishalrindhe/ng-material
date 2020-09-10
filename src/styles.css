@@ -11,6 +11,14 @@ mat-slider {
     color : gray;
   }
 
+  .modal-background{
+    background: #0080f0;
+    
+  }
+
+  .modal-text{
+    color: white;
+  }
   .box-minmax{
     width: 500px;
     display: flex;
