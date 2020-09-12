@@ -21,6 +21,9 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 
+import {MatGridList, MatGridListModule} from '@angular/material/grid-list';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -40,7 +43,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatOptionModule,
     MatSelectModule,
     MatChipsModule,
-    
+    MatGridListModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

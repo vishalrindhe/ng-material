@@ -9,20 +9,14 @@
       Register
     </button>
 
-
-    <mat-form-field class="form-control">
-    <mat-chip-list aria-label="Fish selection">
-      <mat-chip>One fish</mat-chip>
-      <mat-chip>Two fish</mat-chip>
-      <mat-chip color="primary" selected>Primary fish</mat-chip>
-      <mat-chip color="accent" selected>Accent fish</mat-chip>
-    </mat-chip-list>
-    </mat-form-field>
     
+    <div class="container text-center">
+      
+    </div>
 
     <!-- The Modal -->
-    <div class="modal form-group" id="myModal">
-      <div class="modal-dialog">
+    <div class="modal form-group"  id="myModal">
+      <div class="modal-dialog modal-lg"  >
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header modal-background">
@@ -30,25 +24,44 @@
             <button type="button" class="close  modal-close text-white" data-dismiss="modal">&times;</button>
           </div>
           
-          <!-- Modal body -->
-          <div class="margin">
-            <div class="form-group">          
-              <input placeholder="First Name" >
-              <!--this is for single validation and displaying error-->
-            </div>  
-            
-            <div class="form-group">
-              <input  placeholder="Last Name">
-              </div>  
+          <div class="row">
+            <div class="column left" >
 
-              <div class="form-group">
-                <input  placeholder="Email" id="email" name="email">
-                </div>  
               
-              <div class="form-group">
-                <input  placeholder="(987) 654-3210">
-              </div>
+            <div class="form-group">
+              <img [src]="url" height="250" width="310" alt="Img" ><br>
+              <label for="inputUpload" class="custom-file-upload label-text">upload your photo</label>
+              <input id="inputUpload" type="file"  (change)="onSelectFile($event)">            
+            </div>
 
+           
+            </div>
+<!--style="background-color:#000;"-->
+            <div class="column right" style="background-color: brown;" >
+              <div class="form-group">          
+                <input placeholder="First Name" >
+                <!--this is for single validation and displaying error-->
+              </div>  
+                           
+              <div class="form-group">
+                <input  placeholder="Last Name">
+                </div>  
+
+                <div class="form-group">
+                  <input  placeholder="Email" id="email" name="email">
+                  </div>  
+                
+                <div class="form-group">
+                  <input  placeholder="(987) 654-3210">
+                </div>
+
+
+
+            </div>
+          </div>
+
+          <div class="margin">
+          <!-- Modal body -->
               <div class="form-group">
                 <!-- here i have changed primary session color of mat-slider- from indigo-pink.css which is theme -->
                <label class="gray">Age &nbsp;</label>

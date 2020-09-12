@@ -3,6 +3,14 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +20,24 @@ export class AppComponent {
   title = 'angular-material';
   stateHasError = true;
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    
+  }
+
+  url="./assets/blank.jpeg";
+
+  onSelectFile(event){
+    if(event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload =( event: any) => {
+        this.url=event.target.result;
+      }
+      
+    }
+  }
   
   states = [ "Andhra Pradesh","Arunachal Pradesh",
             "Assam","Bihar","Chhattisgarh", "Goa", "Gujarat","Haryana",
@@ -24,6 +50,8 @@ export class AppComponent {
   countries = ["India", "Pak", "China"];
 
   userModel = new Reg ( " ", " ", " " , 1 , 2 , " "," "," " ,true);
+
+  
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -52,8 +80,4 @@ export class AppComponent {
       floatLabel: this.floatLabelControl,
     });
   }
-
-
-  
-
 }
