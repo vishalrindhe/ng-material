@@ -6,8 +6,13 @@ html,body {
   background: linear-gradient(to right top, #ffffff, #a9a9a9);
 } 
 
+.inlineinput div {
+  display: inline;
+}
+
 img{
-  max-width:180px;
+  max-width:315px;
+  max-height: 320px;
 }
 input[type=file]{
 padding:10px;
@@ -16,7 +21,7 @@ background:#2d2d2d;}
 
 label.label-text{
   color: #0080f0;
-  padding-left:30px;
+  padding-left:20px;
 }
 
 #inputUpload {
@@ -35,17 +40,17 @@ label.label-text{
 .column {
   float: inherit;
   position: relative;
-  top: 20px;
+  top: 40px;
  /* Should be removed. Only for demonstration */
 }
 
 .left  {
-  left: 40px;
+  left: 60px;
   width: 25%;
 }
 
 .right {
-  left: 0px;
+  left: 90px;
   width: 70%;
 }
 
@@ -56,7 +61,7 @@ label.label-text{
 }
 
   mat-slider {
-    width: 300px;
+    width: 405px;
     color : gray;
   }
 
@@ -69,7 +74,7 @@ label.label-text{
   }
 
   .width{
-    width: 210px;
+    width: 440px;
   }
 
   .modal-background{
@@ -100,15 +105,15 @@ label.label-text{
     
   .box-agemin{
     position: absolute;
-    left: 10px;
-    top: 63px;
+    left: 40px;
+    top: 208px;
     z-index: 1;
   }
 
   .box-agemax{
     position: absolute;
-    left: 496px;
-    top: 63px;
+    left: 427px;
+    top: 208px;
     z-index: 1;
   }
 
