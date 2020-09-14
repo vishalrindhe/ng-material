@@ -39,39 +39,91 @@
 
               <div class="form-inline">
                 <div class="form-group ">          
-                  <input placeholder="First Name" size=18 style="height:40px;font-size:14pt;">
+                  <input placeholder="First Name" size=16 style="height:40px;font-size:14pt;width: 220px;" 
+                  type="text" #firstName="ngModel" 
+                  [class.is-invalid]="firstName.invalid && firstName.touched" 
+                  required 
+                  pattern="[a-zA-Z]*"
+                  name="firstName" 
+                  value="abc"
+                  [ngModel]="userModel.firstName" 
+                  class="form-control"
+                  >
                   <!--this is for single validation and displaying error-->
-                </div>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div> 
                             
                 <div class="form-group ">
-                  <input  placeholder="Last Name" size=12 style="height:40px;font-size:14pt;">
+                  <input  placeholder="Last Name" size=12 style="height:40px;font-size:14pt;width: 185px;"
+                  type="text" #lastName="ngModel" 
+                  [class.is-invalid]="lastName.invalid && lastName.touched" 
+                  required 
+                  pattern="[a-zA-Z]*"
+                  name="lastName" 
+                  class="form-control small-dimension"
+                  [ngModel]="userModel.lastName">
                 </div>  
               </div>
+                <div>
+                  <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">FirstName is required</small>
+                  
+                  <small class="text-danger small-dimension"  [class.d-none]="lastName.valid || lastName.untouched">LastName is required</small>
+                </div>
 
              <br>
 
                 <div class="form-group">
-                  <input  placeholder="Email" id="email" name="email" size=37 style="height:40px;font-size:14pt;">
-                  </div>  
+                  <input  placeholder="Email" id="email" name="email" size=35 style="height:40px; font-size:14pt;width: 435px;"
+                  type="text" #email="ngModel" 
+                  [class.is-invalid]="email.invalid && email.touched" 
+                  required 
+                  pattern="[a-zA-Z]*"
+                  name="email" 
+                  [ngModel]="userModel.email" 
+                  class="form-control">
+                  <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
+                </div>  
                 
                 <div class="form-group">
-                  <input  placeholder="(987) 654-3210" size=37 style="height:40px;font-size:14pt;">
+                  <input  placeholder="(987) 654-3210"  style="height:40px;font-size:14pt; width: 435px;"
+                  type="tel" #phone="ngModel" 
+                  required pattern="^[7-9][0-9]{9}$" 
+                  [class.is-invalid]="phone.invalid && phone.touched" 
+                  name="phone" value="1"
+                  [ngModel]="" 
+                  class="form-control">
+                  <div *ngIf="phone.errors && (phone.valid || phone.touched)">
+                    <small class="text-danger" *ngIf="phone.errors.required">Phone number is required and must be 10 digits</small>
+                    <small class="text-danger" *ngIf="phone.errors.pattern">Indian number must starts from digits 7,8,9 only and must contain 10 digits</small>
+                  </div>
                 </div>
 
                 <!--<div class="margin"> -->
                   <!-- Modal body -->
-                      <div class="form-group">
+                      <div class="form-group ">
                         <!-- here i have changed primary session color of mat-slider- from indigo-pink.css which is theme -->
-                       <label class="gray">Age &nbsp;</label>
-                        <mat-slider min=20 max=60 value=20 thumbLabel color="primary" (input)="onChange($event)" ></mat-slider>
+                        <div class="inlineinput">
+                          <label class="gray">Age &nbsp;</label>
+                          <div>
+                          <mat-slider min=20 max=60 value=20 thumbLabel color="primary"  (input)="onChange($event)" > </mat-slider>
+                        </div>
+                          
                           <!-- change the dimension of box-agemin/max from style.css-->            
+                        </div>
                           <div class="box-minmax">
-                            <span  class="box-agemin" >20</span><span class="box-agemax">60</span>
+                            <span class="box-agemin" >20</span><span class="box-agemax" >60</span>
                           </div>
                       </div>
         
                       <div class="form-group">
-                        <input  placeholder="Address" size=37 style="height:40px;font-size:14pt;">
+                        <input  placeholder="Address" size=37 style="height:40px;font-size:14pt; width: 438px;"
+                        type="text" #address="ngModel" 
+                        [class.is-invalid]="address.invalid && address.touched" 
+                        required 
+                        pattern="[a-zA-Z]*"
+                        name="address" 
+                        [ngModel]="userModel.address" 
+                        class="form-control">
+                        <small class="text-danger" [class.d-none]="address.valid || address.untouched">Address is required</small>
                       </div>
         
                     <div class="form-group">

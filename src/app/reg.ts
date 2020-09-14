@@ -5,9 +5,9 @@ export class Reg {
         public email: string,
         public phone: number,
         public age: number,
+        public address:string,
         public state:string,
         public country:string,
-        public address:string,
         public subscribe: boolean,
     ) {}
 }

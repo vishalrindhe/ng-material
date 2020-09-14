@@ -49,7 +49,7 @@ export class AppComponent {
 
   countries = ["India", "Pak", "China"];
 
-  userModel = new Reg ( " ", " ", " " , 1 , 2 , " "," "," " ,true);
+  userModel = new Reg ( "", "", "" , 9876543210, 2 , "","","" ,true);
 
   
 
