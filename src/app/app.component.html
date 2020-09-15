@@ -1,7 +1,7 @@
 <!--<router-outlet></router-outlet> -->
 
 
-<form #userForm='ngForm'  novalidate >
+<form #userForm='ngForm'  *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate >
   <div class="container">
     <h2>Modal Example</h2>
     <!-- Button to Open the Modal -->
@@ -65,23 +65,26 @@
               </div>
                 <div>
                   <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">FirstName is required</small>
-                  
                   <small class="text-danger small-dimension"  [class.d-none]="lastName.valid || lastName.untouched">LastName is required</small>
                 </div>
 
              <br>
 
                 <div class="form-group">
-                  <input  placeholder="Email" id="email" name="email" size=35 style="height:40px; font-size:14pt;width: 435px;"
-                  type="text" #email="ngModel" 
+                  <input  placeholder="Email" size=35 style="height:40px; font-size:14pt;width: 435px;"
+                  type="email" #email="ngModel" 
                   [class.is-invalid]="email.invalid && email.touched" 
                   required 
-                  pattern="[a-zA-Z]*"
+                  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   name="email" 
                   [ngModel]="userModel.email" 
                   class="form-control">
-                  <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
-                </div>  
+                    <div *ngIf="email.errors && (email.valid || email.touched)">
+                      <small class="text-danger" *ngIf="email.errors.required " >Email is required</small>
+                     <small class="text-danger" *ngIf="email.errors.pattern">Please provide valid email</small>
+                   </div>
+                </div>
+
                 
                 <div class="form-group">
                   <input  placeholder="(987) 654-3210"  style="height:40px;font-size:14pt; width: 435px;"
@@ -127,30 +130,43 @@
                       </div>
         
                     <div class="form-group">
-                      <select class="custom-select width"
+                      <select class="custom-select width form-control"
+                      style="height:40px;font-size:14pt; width: 438px;"
                       #state="ngModel"
-                      [ngModel]="userModel.state"  >
+                      [ngModel]="userModel.state" 
+                      name="state"
+                      (blur)="validateState(state.value)" 
+                      (change)="validateState(state.value)" 
+                      class="custom-select" 
+                      [class.is-invalid]="stateHasError && state.touched" >
                       <option value="default">State</option>
                         <option *ngFor="let state of states" > {{ state }} </option>
                       </select>
-                      <small class="text-danger" [class.d-none]="!stateHasError || state.untouched">Please select topic</small>
+                      <br>
+                      <small class="text-danger" [class.d-none]="!stateHasError || state.untouched">Please select State</small>
                     </div>
         
                     <div class="form-group">
-                      <select #country="ngModel" class="custom-select width" [ngModel]="userModel.country">
-                        <option value="default">Country</option>
-                        <option *ngFor="let country of countries">{{country}}</option>
-                      </select>
-                        
-                      <br>
-                      <br>
-                      <div class="form-group">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" #subscribe=ngModel name="subscribe" [ngModel]="userModel.subscribe" class="form-check-input">&nbsp;&nbsp;
-                        <label class="form-check-label" >
-                          subscribe to newsletter
-                        </label>
-                      </div>
+                        <select class="custom-select width form-control"
+                        style="height:40px;font-size:14pt; width: 438px;"
+                        #country="ngModel" [ngModel]="userModel.country"
+                        class="custom-select width form-control"
+                        name="country"
+                        (blur)="validateCountry(country.value)" 
+                        (change)="validateCountry(country.value)" 
+                        [class.is-invalid]="countryHasError && country.touched">
+                          <option value="default">Country</option>
+                          <option *ngFor="let country of countries">{{country}}</option>
+                        </select>
+                        <br>
+                        <small class="text-danger" [class.d-none]="!countryHasError || country.untouched">Please select Country</small>
                     </div>
+                    <div class="form-group">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" #subscribe=ngModel name="subscribe" [ngModel]="userModel.subscribe" class="form-check-input">&nbsp;&nbsp;
+                      <label class="form-check-label" >
+                        subscribe to newsletter
+                      </label>
+                  </div>
                     <br>
                     <br>
             </div>
@@ -162,7 +178,7 @@
                 <button type="button" class="btn btn-outline-secondary" size=5 style="height:40px; width: 125px;font-size:14pt;" data-dismiss="modal">Cancel</button>
               </div>  &nbsp;&nbsp;
               <div class="form-group">
-                  <button type="submit" class="btn btn-primary"  style="height:40px; width: 125px; font-size:14pt;">Submit</button>
+                  <button [disabled]="userForm.form.invalid || stateHasError || countryHasError" class="btn btn-primary" type="submit" class="btn btn-primary"  style="height:40px; width: 125px; font-size:14pt;">Submit</button>
               </div>                
             </div>
           </div>

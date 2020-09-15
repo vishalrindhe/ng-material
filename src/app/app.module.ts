@@ -19,9 +19,12 @@ import {FormsModule, FormControl, Validators, ReactiveFormsModule} from '@angula
 import { MatOptionModule, MatOptionSelectionChange } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 
+import { HttpClientModule } from '@angular/common/http';
 
 
 import {MatGridList, MatGridListModule} from '@angular/material/grid-list';
+
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 
 @NgModule({
@@ -44,7 +47,9 @@ import {MatGridList, MatGridListModule} from '@angular/material/grid-list';
     MatSelectModule,
     MatChipsModule,
     MatGridListModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,9 @@ import { Reg } from './reg';
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { EnrollmentService } from './enrollment.service';
+
+
 
 export interface Tile {
   color: string;
@@ -19,7 +22,10 @@ export interface Tile {
 export class AppComponent {
   title = 'angular-material';
   stateHasError = true;
-
+  countryHasError = true;
+  submitted=false;
+  errorMsg = '';
+ 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -49,16 +55,26 @@ export class AppComponent {
 
   countries = ["India", "Pak", "China"];
 
-  userModel = new Reg ( "", "", "" , 9876543210, 2 , "","","" ,true);
+  userModel = new Reg ( "", "", "" , 9876543210, 2 , "","default","default" ,true);
+  constructor(private _enrollmentService: EnrollmentService){
 
-  
+  }
+
+  onSubmit(){
+    this.submitted = true;
+    this._enrollmentService.enroll(this.userModel)
+      .subscribe(
+        data => console.log('Success!',data),
+        error => this.errorMsg = error.statusText
+      )
+  }
 
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
 
-  validateTopic(value) {
+  validateState(value) {
     if (value === 'default'){
     this.stateHasError=true;
     } else {
@@ -66,6 +82,13 @@ export class AppComponent {
     }
   }
 
+  validateCountry(value) {
+    if (value === 'default'){
+    this.countryHasError=true;
+    } else {
+      this.countryHasError = false;
+    }
+  }
   onChange(event) {
     console.log(event);
   }
@@ -74,10 +97,5 @@ export class AppComponent {
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
 
-  constructor(fb: FormBuilder) {
-    this.options = fb.group({
-      hideRequired: this.hideRequiredControl,
-      floatLabel: this.floatLabelControl,
-    });
-  }
+  
 }
