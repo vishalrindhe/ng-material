@@ -6,6 +6,8 @@ export class Reg {
         public phone: number,
         public age: number,
         public address:string,
+        public addressline1:string,
+        public addressline2:string,
         public state:string,
         public country:string,
         public subscribe: boolean,

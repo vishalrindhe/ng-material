@@ -23,6 +23,7 @@ export class AppComponent {
   title = 'angular-material';
   stateHasError = true;
   countryHasError = true;
+  addressHasError = true;
   submitted=false;
   errorMsg = '';
  
@@ -55,7 +56,9 @@ export class AppComponent {
 
   countries = ["India", "Pak", "China"];
 
-  userModel = new Reg ( "", "", "" , 9876543210, 2 , "","default","default" ,true);
+  addresses = [ "Home", "Company"];
+
+  userModel = new Reg ( "", "", "" , 9876543210, 2 , "default","default","default","default","default" ,true);
   constructor(private _enrollmentService: EnrollmentService){
 
   }
@@ -89,6 +92,15 @@ export class AppComponent {
       this.countryHasError = false;
     }
   }
+
+  validateAddress(value) {
+    if (value === 'default'){
+    this.addressHasError=true;
+    } else {
+      this.addressHasError = false;
+    }
+  }
+
   onChange(event) {
     console.log(event);
   }
