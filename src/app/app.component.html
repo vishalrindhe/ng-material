@@ -1,4 +1,4 @@
-<!--<router-outlet></router-outlet> -->
+<router-outlet></router-outlet> 
 
 
 <form #userForm='ngForm'  *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate >
@@ -161,7 +161,12 @@
                         <br>
                         <small class="text-danger" [class.d-none]="!countryHasError || country.untouched">Please select Country</small>
                     </div>
+
                     <div class="form-group">
+                      <app-chips-autocomplete-example></app-chips-autocomplete-example>
+                    </div>
+
+                    <div class="form-group" style="padding-top: 40px;">
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" #subscribe=ngModel name="subscribe" [ngModel]="userModel.subscribe" class="form-check-input">&nbsp;&nbsp;
                       <label class="form-check-label" >
                         subscribe to newsletter
